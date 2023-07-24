@@ -50,6 +50,10 @@
 #imageContainerList {
   display: block;
 }
+#imageContainerList div {
+  border: #ff00004f 10px solid;
+  padding 10 px;
+}
 #imageContainerList a {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
@@ -85,29 +89,51 @@
   
       </div>
     <script>
+        var titles = {'posters': "Posters", "flyers": "Flyers", "logos": "Logos", "web_design": "Web Design"}
         var imageIndex = 0;
-        var imageList = [];
+        var galeryList = [];
+        var imageList = [
+              {'posters': ['P.png']}, 
+              {"flyers": ["Alk1.png","Alk2.png","Alk3.png","Alk4.png","Alk5.png","A5-flyer_front-1.png","A5-flyer_back-1.png", "A5-flyer_front.png", "A5-flyer_back.png"]},
+              {"logos": []},
+              {"web_design": ["Splash_screen.png", "List_of_foods.png"]},
+              ]
         function fetchImages() {
-            imageList=['P.png', "Alk1.png","Alk2.png","Alk3.png","Alk4.png","Alk5.png"]
+            setUpGalaryList();
             setUpGallery();
             showNextImage();
         }
 
+        function setUpGalaryList(){
+          console.log(imageList);
+          imageList.forEach( (element, _k)=> {
+              for( i in element){                
+                for(var x=0; x<element[i].length; x++){
+                  galeryList.push(element[i][x])
+                }
+              }
+            });
+        }
         function setUpGallery() {
             var imageContainer = document.getElementById("imageContainerList");
             var img = null;
-            for(var x=0; x<imageList.length; x++){
-              img = '<a href="images/'+imageList[x]+'" target="_blank"> <img id="portfolioImage" class="gallery-image" src="images/'+imageList[x]+'" alt="Portfolio Image"></a>'
-              // imageContainer.append(img);
-              imageContainer.innerHTML += img;
-            }
+            imageList.forEach( (element, _k)=> {
+              for( i in element){                
+                imageContainer.innerHTML += "<div type="+i+"><p>"+titles[i]+"</p></div>";
+                active_node = document.querySelector('#imageContainerList div[type="'+i+'"]')
+                for(var x=0; x<element[i].length; x++){
+                  img = '<a href="images/'+element[i][x]+'" target="_blank"> <img id="portfolioImage" class="gallery-image" src="images/'+element[i][x]+'" alt="Portfolio Image"></a>'
+                  active_node.innerHTML += img;
+                }
+              }
+            });
         }
         // Function to display the next image
         function showNextImage() {
             var imageContainer = document.getElementById("imageContainer");
             var portfolioImage = document.getElementById("portfolioImage");
-            if (imageIndex < imageList.length) {
-                var imageUrl = "./images/" + imageList[imageIndex];
+            if (imageIndex < galeryList.length) {
+                var imageUrl = "./images/" + galeryList[imageIndex];
                 portfolioImage.src = imageUrl;
                 imageIndex++;
             } else {
