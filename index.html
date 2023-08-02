@@ -29,8 +29,8 @@
 #imageContainerList {
   display: grid;
   grid-template-columns: auto auto;
-  /* background-color: #152A3C; */
   padding: 5px;
+  background-color: #171819;
 }
 #imageContainerList {
   display: block;
@@ -41,7 +41,7 @@
   padding: 20px;
 }
 #imageContainerList a {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #171819;
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 5px;
   font-size: 30px;
@@ -49,7 +49,7 @@
   display: inline-block;
 }
 #imageContainerList a  img{
-  background-color: rgba(255, 255, 255, 0.8);
+  /* background-color: rgba(255, 255, 255, 0.8); */
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 5px;
   font-size: 30px;
@@ -64,6 +64,8 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+  background-color: #181a1b;
+  color: white;
 }
 
 /* Header/logo Title */
@@ -98,6 +100,7 @@ body {
   text-align: center;
   padding: 14px 20px;
   text-decoration: none;
+  background-color: #171819;
 }
 
 
@@ -108,13 +111,13 @@ body {
 
 /* Change color on hover */
 .navbar a:hover {
-  background-color: #ddd;
+  /* background-color: #ddd; */
   color: black;
 }
 
 /* Active/current link */
 .navbar a.active {
-  background-color: #666;
+  /* background-color: #666; */
   color: white;
 }
 
@@ -131,7 +134,7 @@ body {
 .side {
   -ms-flex: 30%; /* IE10 */
   flex: 30%;
-  background-color: #f1f1f1;
+  background-color: #202324;
   padding: 20px;
 }
 
@@ -139,14 +142,7 @@ body {
 .main {   
   -ms-flex: 70%; /* IE10 */
   flex: 70%;
-  background-color: white;
-  padding: 20px;
-}
-
-/* Fake image, just for this example */
-.fakeimg {
-  background-color: #aaa;
-  width: 100%;
+  background-color: #181a1b;
   padding: 20px;
 }
 
@@ -154,7 +150,7 @@ body {
 .footer {
   padding: 20px;
   text-align: center;
-  background: #ddd;
+  background: #2b2f31;
 }
 
 img.prev{
@@ -198,14 +194,7 @@ img.prev{
       <p><b>name:</b> Līva Paula Vilsone</p>
       <p><b>phone number:</b> Look in my Cv</p>
       <p><b>Short Intro:</b> I have interests in culutre, technologies, design and nature. The best ideas ar simple - at least as far as design is concerned. I have completed Web development courses and able to develop intuitive UI and I am still learning about UX, although I would say, that it will never end.</p>
-      <!-- 
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-      <h3>More Text</h3>
-      <p>Lorem ipsum dolor sit ame.</p>
-      <div class="fakeimg" style="height:60px;">Image</div><br>
-      <div class="fakeimg" style="height:60px;">Image</div><br>
-      <div class="fakeimg" style="height:60px;">Image</div> -->
+      
     </div>
     <div class="main">
       <div id="imageContainerList" class="image-container"></div>
@@ -218,15 +207,16 @@ img.prev{
 
 
     <script>
-        var titles = {'posters': "Posters", "flyers": "Flyers", "logos": "Logos", "web_design": "Web Design"}
+        var titles = {'posters': "Posters", "flyers": "Flyers", "logos": "Logos", "web_design": "Web Design", "photo_processing": "Photo processing"}
         var imageIndex = 0;
         var galeryList = [];
         var timeoutID = 0;
         var imageList = [
-              {'posters': ['P.png', "PLAKATS.jpg"]}, 
-              {"flyers": ["Alk1.png","Alk2.png","Alk3.png","Alk4.png","Alk5.png","A5-flyer_front-1.png","A5-flyer_back-1.png", "A5-flyer_front.png", "A5-flyer_back.png"]},
-              {"logos": []},
-              {"web_design": ["Splash_screen.png", "List_of_foods.png"]},
+              {'posters': ['./posters/P.png', "./posters/PLAKATS.jpg", "./posters/poster_sagatave.png"]}, 
+              {"flyers": ["./flyers/Alk1.png","./flyers/Alk2.png","./flyers/Alk3.png","./flyers/Alk4.png","./flyers/Alk5.png","./flyers/A5-flyer_front-1.png","./flyers/A5-flyer_back-1.png", "./flyers/A5-flyer_front.png", "./flyers/A5-flyer_back.png"]},
+              {"web_design": ["./phone-design/Splash_screen.png", "./phone-design/List_of_foods.png"]},
+              {"photo_processing": ["./photo-processing/IMG_20180227.jpg"]},
+              {"logos": ["./logo/LBJC_KNIFS_PNG.png"]}
               ]
         function fetchImages() {
             setUpGalaryList();
