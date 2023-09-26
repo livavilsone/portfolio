@@ -72,5 +72,4 @@ document.querySelector('div.header .prev').addEventListener('click', function(e)
 document.querySelector('div.header .next').addEventListener('click', function(e) {showNextImage()});
 
 // Call the fetchImages function to start fetching the image file names
-import data from './images.json' assert { type: 'json' };
 fetchImages();
