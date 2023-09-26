@@ -1,0 +1,168 @@
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 400px; */
+}
+.portfolio-image {
+    max-width: 100%;
+    max-height: 600px;
+    min-height: 300px;
+}
+.gallery-image{
+    max-width: 100%;
+    max-height: 300px;
+    min-height: 100px;
+}
+
+.item1 { grid-area: header; }
+.item2 { grid-area: menu; }
+.item3 { grid-area: main; }
+.item4 { grid-area: right; }
+.item5 { grid-area: footer; }
+
+#imageContainerList {
+display: grid;
+grid-template-columns: auto auto;
+padding: 5px;
+background-color: #171819;
+}
+#imageContainerList {
+display: block;
+}
+#imageContainerList div {
+/* border: #ff00004f 10px solid; */
+border-bottom: dotted 2px #ffffffd9;
+padding: 20px;
+}
+#imageContainerList a {
+background-color: #171819;
+border: 1px solid rgba(0, 0, 0, 0.8);
+padding: 5px;
+font-size: 30px;
+text-align: center;
+display: inline-block;
+}
+#imageContainerList a  img{
+/* background-color: rgba(255, 255, 255, 0.8); */
+border: 1px solid rgba(0, 0, 0, 0.8);
+padding: 5px;
+font-size: 30px;
+text-align: center;
+max-height: 460px;
+}
+* {
+box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+font-family: Arial, Helvetica, sans-serif;
+margin: 0;
+background-color: #181a1b;
+color: white;
+}
+
+/* Header/logo Title */
+.header {
+/* padding: 80px; */
+text-align: center;
+background: #1abc9c;
+color: white;
+}
+.header div.imageContainer{
+height: 500px;
+}
+/* Increase the font size of the heading */
+.header h1 {
+font-size: 40px;
+}
+
+/* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
+.navbar {
+overflow: hidden;
+background-color: #333;
+position: sticky;
+position: -webkit-sticky;
+top: 0;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+float: left;
+display: block;
+color: white;
+text-align: center;
+padding: 14px 20px;
+text-decoration: none;
+background-color: #171819;
+}
+
+
+/* Right-aligned link */
+.navbar a.right {
+float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+/* background-color: #ddd; */
+color: black;
+}
+
+/* Active/current link */
+.navbar a.active {
+/* background-color: #666; */
+color: white;
+}
+
+/* Column container */
+.row {  
+display: -ms-flexbox; /* IE10 */
+display: flex;
+-ms-flex-wrap: wrap; /* IE10 */
+flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+-ms-flex: 30%; /* IE10 */
+flex: 30%;
+background-color: #202324;
+padding: 20px;
+}
+
+/* Main column */
+.main {   
+-ms-flex: 70%; /* IE10 */
+flex: 70%;
+background-color: #181a1b;
+padding: 20px;
+}
+
+/* Footer */
+.footer {
+padding: 20px;
+text-align: center;
+background: #2b2f31;
+}
+
+img.prev{
+transform: rotate(180deg);
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+.row {   
+flex-direction: column;
+}
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+.navbar a {
+float: none;
+width: 100%;
+}
+}
