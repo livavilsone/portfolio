@@ -4,9 +4,7 @@ var imageIndex = 0;
 var galeryList = [];
 var timeoutID = 0;
 var imageList = {}
-
 function fetchImages() {
-    console.log("aaaa");
     setUpGalaryList();
 }
 
@@ -28,7 +26,6 @@ function setUpGallery() {
     var img = null;
 
     for(var key in this.imageList){
-        console.log(this.imageList[key]);
         document.querySelector('div.navbar').innerHTML += "<a href='#" + key + "'>" + titles[key] + "</a>"
         imageContainer.innerHTML += "<div type="+key+" id="+key+"><p>"+titles[key]+"</p></div>";
         active_node = document.querySelector('#imageContainerList div[type="'+key+'"]')
