@@ -1,7 +1,7 @@
 {
-"posters": ["./posters/P.png", "./posters/PLAKATS.jpg", "./posters/poster_sagatave.png", "./posters/vaakidoone.png"], 
-"flyers": ["./flyers/Alk1.png","./flyers/Alk2.png","./flyers/Alk3.png","./flyers/Alk4.png","./flyers/Alk5.png","./flyers/A5-flyer_front-1.png","./flyers/A5-flyer_back-1.png", "./flyers/A5-flyer_front.png", "./flyers/A5-flyer_back.png"],
-"web_design": ["./phone-design/Splash_screen.png", "./phone-design/List_of_foods.png"],
-"photo_processing": ["./photo-processing/IMG_20180227.jpg"],
-"logos": ["./logo/LBJC_KNIFS_PNG.png", "./logo/Geometric.jpg", "./logo/sports-low-resolution-logo-black-on-transparent-background.png", "./logo/sports-low-resolution-logo-white-on-transparent-background.png"]
+"posters": ["posters/P.png", "posters/PLAKATS.jpg", "posters/poster_sagatave.png", "posters/vaakidoone.png"], 
+"flyers": ["flyers/Alk1.png","flyers/Alk2.png","flyers/Alk3.png","flyers/Alk4.png","flyers/Alk5.png","flyers/A5-flyer_front-1.png","flyers/A5-flyer_back-1.png", "flyers/A5-flyer_front.png", "flyers/A5-flyer_back.png"],
+"web_design": ["phone-design/Splash_screen.png", "phone-design/List_of_foods.png"],
+"photo_processing": ["photo-processing/IMG_20180227.jpg"],
+"logos": ["logo/LBJC_KNIFS_PNG.png", "logo/Geometric.jpg", "logo/sports-low-resolution-logo-black-on-transparent-background.png", "logo/sports-low-resolution-logo-white-on-transparent-background.png"]
 }
