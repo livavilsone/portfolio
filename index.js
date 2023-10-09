@@ -9,14 +9,20 @@ function fetchImages() {
 }
 
 function setUpGalaryList(){
-    fetch('https://livavilsone.github.io/portfolio/images.json')
+    fetch('https://livavilsone.github.io/portfolio/images-info.json')
     .then((response) => response.json())
-    .then((json) => {
-        this.imageList = json;
-        for(key in json){
-            this.galeryList = this.galeryList.concat(json[key]);
+    .then((data_json) => {
+        for(key in data_json){
+            if(this.imageList[key] === undefined){
+                this.imageList[key] = []
+            }
+            for (x in data_json[key]){
+                this.imageList[key].push(data_json[key][x]);
+                this.galeryList.push(key + '/' + data_json[key][x]['name']);
+            }
         }
         setUpGallery();
+        setUpModalWindow();
         showNextImage();
 
     });
@@ -30,10 +36,69 @@ function setUpGallery() {
         imageContainer.innerHTML += "<div type="+key+" id="+key+"><p>"+titles[key]+"</p></div>";
         active_node = document.querySelector('#imageContainerList div[type="'+key+'"]')
         for(i in this.imageList[key]){
-              img = '<a href="images/'+this.imageList[key][i]+'" target="_blank"> <img id="portfolioImage" class="gallery-image" src="images/'+this.imageList[key][i]+'" alt="Portfolio Image"></a>'
+              img = '<span href="images/'+key+'/'+this.imageList[key][i]['name']+'" description="'+ this.imageList[key][i]['description'] +'" class=\"open-modal\" > <img id="portfolioImage" class="gallery-image" src="images/'+key+'/'+this.imageList[key][i]['name']+'" alt="Portfolio Image"></span>'
               active_node.innerHTML += img;
         }
     }
+}
+
+function setUpModalWindow() {
+    // document.querySelectorAll('open-modal');
+    // document.querySelector('div.modal-view-window');
+    document.querySelectorAll('.open-modal').forEach(function(node){
+        node.addEventListener('click', function(e){
+            document.querySelector('div.modal-view-window').classList.remove('hidden');
+            document.querySelector('div.modal-view-window img').setAttribute('src', e.currentTarget.getAttribute('href'));
+
+            var image_field = document.querySelector('div.modal-view-window img');
+            var text_field = document.querySelector('.modal-view-window div');
+
+            if(e.currentTarget.getAttribute('description') !== 'undefined' ){
+                document.querySelector('div.modal-view-window .description').innerHTML= e.currentTarget.getAttribute('description');
+            } else {
+                document.querySelector('div.modal-view-window .description').innerHTML= '';
+            }
+
+            var width = image_field.getBoundingClientRect().right - image_field.getBoundingClientRect().left; // - text_field.getBoundingClientRect().right - text_field.getBoundingClientRect().left;
+            var height = text_field.getBoundingClientRect().height;
+
+            image_field.addEventListener('mouseenter', function(event){
+                if(text_field.textContent != ""){
+                    text_field.classList.remove('hidden');
+                    image_field.style.opacity=0.5;
+                    text_field.style.top = image_field.getBoundingClientRect().top + 'px';
+                    text_field.style.left = image_field.getBoundingClientRect().left + 'px';
+                    text_field.style.width = width + 'px';
+                    text_field.style.paddingTop =  (image_field.getBoundingClientRect().height - text_field.getBoundingClientRect().height)/2  + 'px';
+                    text_field.style.paddingBottom  =  (image_field.getBoundingClientRect().height - text_field.getBoundingClientRect().height)/2  + 'px';
+                    text_field.style.marginTop =  (image_field.getBoundingClientRect().height - text_field.getBoundingClientRect().height)/2  + 'px';
+                    text_field.style.marginTop  =  (image_field.getBoundingClientRect().height - text_field.getBoundingClientRect().height)/2  + 'px';
+                }
+            });
+            image_field.addEventListener('mouseover', function(event){
+                if(text_field.textContent != ""){
+                    document.querySelector('.modal-view-window div').classList.remove('hidden');
+                    image_field.style.opacity=0.5;
+                    text_field.style.top = image_field.getBoundingClientRect().top + 'px';
+                    text_field.style.left = image_field.getBoundingClientRect().left + 'px';
+                    text_field.style.width = width + 'px';
+                    text_field.style.paddingTop =  (image_field.getBoundingClientRect().height - text_field.getBoundingClientRect().height)/2  + 'px';
+                    text_field.style.paddingBottom  =  (image_field.getBoundingClientRect().height - text_field.getBoundingClientRect().height)/2  + 'px';
+                    text_field.style.marginTop =  (image_field.getBoundingClientRect().height - text_field.getBoundingClientRect().height)/2  + 'px';
+                    text_field.style.marginTop  =  (image_field.getBoundingClientRect().height - text_field.getBoundingClientRect().height)/2  + 'px';
+                }
+            });
+            image_field.addEventListener('mouseleave', function(event){
+                if(text_field.textContent != ""){
+                    document.querySelector('.modal-view-window div').classList.add('hidden');
+                    image_field.style.opacity=1;
+                }
+            });
+            document.querySelector('div.modal-view-window .close').addEventListener('click', function(event){
+                event.currentTarget.parentElement.classList.add('hidden');
+            });
+        });
+    });
 }
 // Function to display the next image
 function showNextImage() {
